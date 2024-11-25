@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://t11qp78mc1q3"]
+
+[ext_resource type="FontFile" uid="uid://dt06uqgw02axc" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="1_06py3"]
+[ext_resource type="Script" path="res://Scripts/time.gd" id="2_xgwuk"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 784.0
+offset_top = 512.0
+offset_right = 1136.0
+offset_bottom = 578.0
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_06py3")
+theme_override_font_sizes/font_size = 75
+text = "Timeless"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 352.0
+offset_bottom = 66.0
+grow_vertical = 2
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("1_06py3")
+theme_override_font_sizes/font_size = 50
+text = "foo"
+script = ExtResource("2_xgwuk")
+
+[node name="Timer" type="Timer" parent="Label2"]
+autostart = true
+
+[connection signal="timeout" from="Label2/Timer" to="Label2" method="_on_timer_timeout"]
